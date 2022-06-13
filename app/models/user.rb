@@ -4,6 +4,9 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
+  has_many :categories
+  has_many :tasks, through: :user_tasks
+
   def start_date
     DateTime.now
   end

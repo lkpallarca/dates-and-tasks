@@ -1,0 +1,27 @@
+<%= form_with model: category do |form| %>
+  <% if category.errors.any? %>
+    <div id="error_message">
+      <% category.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+      <% end %>
+    </div>
+  <% end %>
+
+  <section>
+    <%= hidden_field_tag :previous_request, request.referer %>
+
+    <div>
+      <%= form.label :title %>
+      <%= form.text_field :title, required: true %>
+    </div>
+
+    <div>
+      <%= form.label "Date" %>
+      <%= form.date_field :target_date, required: true, value: target_day %>
+    </div>
+
+    <div>
+      <%= form.submit %>
+    </div>
+  </section>
+<% end %>

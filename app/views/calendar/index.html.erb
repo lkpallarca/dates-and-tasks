@@ -2,7 +2,26 @@
 <p>Find me in app/views/calendar/index.html.erb</p>
 
 <%= link_to "Sign Out", destroy_user_session_path, method: :delete %>
+<%= link_to "All categs", categories_path %>
+
+<div> <%= current_user.username %> </div>
 
 <%= month_calendar do |date| %>
   <%= date.day %>
+
+  <% @categories.map do |category| %>
+    <% if category.target_date == date %>
+      <%= link_to "View Events", categories_path(target_day: category.target_date.to_date) %>
+      <% break %>
+    <% end %>
+  <% end %>
+
+  <%= link_to "Add Events", new_category_path(target_day: date) %>
 <% end %>
+
+<br>
+<br>
+<br>
+<br>
+
+<div>show here</div>

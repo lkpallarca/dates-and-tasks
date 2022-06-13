@@ -1,0 +1,17 @@
+<%= form_with model: [@category, @task] do |form| %>
+  <section>
+    <div>
+      <%= form.label :title %>
+      <%= form.text_field :title %>
+    </div>
+
+    <div>
+      <%= form.label :body %>
+      <%= form.text_area :body %>
+    </div>
+    
+    <div>
+      <%= form.submit %>
+    </div>
+  </section>
+<% end %>
