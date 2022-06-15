@@ -62,6 +62,6 @@ class CategoriesController < ApplicationController
   end
 
   def category_params
-    params.require(:category).permit(:title, :target_date, :user_id, :previous_request)
+    params.require(:category).permit(:title, :details, :target_date, :user_id, :previous_request)
   end
 end

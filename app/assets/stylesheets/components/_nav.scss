@@ -1,0 +1,37 @@
+@import "../base/variables";
+@import "../base/mixins";
+
+nav {
+  @include perimeter(auto, auto);
+  display: flex;
+  justify-content: space-between;
+  padding: 25px 20px;
+
+  a {
+    font-size: 3vmin;
+    color: $link-blue;
+    background-color: $my-color;
+    color: white;
+    border-radius: 7px;
+    padding: 4px 8px;
+    font-size: 18px;
+
+    &:hover {
+      color: $my-red;
+    }
+  }
+
+  .brand {
+    font-family: $title-font;
+    color: white;
+    font-size: 24px;
+    background-color: transparent;
+    padding: 0;
+    transition: 0.2s padding ease-in-out;
+
+    &:hover {
+      color: #202124;
+      padding-left: 10px;
+    }
+  }
+}

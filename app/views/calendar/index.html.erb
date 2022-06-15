@@ -1,27 +1,26 @@
-<h1>Calendar#index</h1>
-<p>Find me in app/views/calendar/index.html.erb</p>
+<section class="calendar-page">
+  <nav>
+    <div class="brand">Dates and Tasks</div>
+    <%= link_to "Sign Out", destroy_user_session_path, method: :delete %>
+  </nav>
 
-<%= link_to "Sign Out", destroy_user_session_path, method: :delete %>
-<%= link_to "All categs", categories_path %>
-
-<div> <%= current_user.username %> </div>
-
-<%= month_calendar do |date| %>
-  <%= date.day %>
-
-  <% @categories.map do |category| %>
-    <% if category.target_date == date %>
-      <%= link_to "View Events", categories_path(target_day: category.target_date.to_date) %>
-      <% break %>
-    <% end %>
+  <% if notice %>
+    <p class='notice'> <%= notice %> </p>
   <% end %>
 
-  <%= link_to "Add Events", new_category_path(target_day: date) %>
-<% end %>
+  <div class="calendar-wrapper">
+    <%= month_calendar do |date| %>
+      <%=  date.day %>
 
-<br>
-<br>
-<br>
-<br>
+      <% @categories.map do |category| %>
+        <% if category.target_date == date %>
+          <%= link_to "View Events", categories_path(target_day: category.target_date.to_date), class: "view-event" %>
+          <% break %>
+        <% end %>
+      <% end %>
 
-<div>show here</div>
+      <%= link_to "Add Event", new_category_path(target_day: date), class: "add-event" %>
+    <% end %>
+  </div>
+</section>
+

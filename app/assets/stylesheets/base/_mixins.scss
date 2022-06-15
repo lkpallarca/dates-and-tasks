@@ -1,0 +1,34 @@
+@mixin perimeter($h, $w) {
+  height: $h;
+  width: $w;
+}
+
+@mixin scrollbar {
+  &::-webkit-scrollbar {
+    width: 0.4rem;
+  }
+  
+  &::-webkit-scrollbar-track {
+    background: hsl(225, 6%, 13%);
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: hsl(0, 0%, 60%); 
+    border-radius: 0.5rem;
+
+    &:hover {
+      background: #555; 
+    }
+  }
+}
+
+@mixin box {
+  border-top: 2px solid $my-red;
+  border-left: 2px solid $my-red;
+  border-bottom: 2px solid $my-blue;
+  border-right: 2px solid $my-blue;
+  box-shadow: 3px 3px 8px gray, -3px 3px 8px gray;
+  background-color: hsla(0, 0%, 100%, 0.9);
+  border-radius: 15px;
+  padding: 20px 60px 20px 30px;
+}

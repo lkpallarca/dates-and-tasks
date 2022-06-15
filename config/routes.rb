@@ -11,5 +11,4 @@ Rails.application.routes.draw do
   end
   
   get '/calendar', to: 'calendar#index'
-  get '/add-users', to: 'user_tasks#new'
 end

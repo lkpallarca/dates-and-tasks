@@ -1,0 +1,56 @@
+@import "../base/variables";
+@import "../base/mixins";
+
+.new-categ-form {
+  @include perimeter(auto, max-content);
+  @include box;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  font-size: 26px;
+
+  section {
+    div {
+      margin: 2.5vmin 0 2.5vmin 2.5vmin;
+      border-radius: 10px;
+
+      label {
+        color: red;
+      }
+
+      input, textarea {
+        padding: 5px 15px;
+        border: 2px solid $my-blue-dark;
+        border-radius: 7px;
+        font-size: 18px;
+        margin-top: 10px;
+      }
+
+      textarea {
+        @include perimeter(150px, 300px);
+        @include scrollbar;
+        resize: none;
+      }
+    }
+
+    .submit-btn {
+      
+      input {
+        cursor: pointer;
+        font-size: 3vmin;
+        border: none;
+        color: $link-blue;
+        background-color: $my-color;
+        color: white;
+        border-radius: 7px;
+        padding: 4px 8px;
+        font-size: 20px;
+        margin-top: 0;
+
+        &:hover {
+          color: $my-blue;
+        }
+      }
+    }
+  }
+}

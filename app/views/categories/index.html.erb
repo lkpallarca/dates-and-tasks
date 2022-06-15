@@ -1,25 +1,31 @@
-<h1>Categories#index</h1>
-<p>Find me in app/views/categories/index.html.erb</p>
+<section class="category-index sections">
+  <%= render 'nav' %>
 
-<%= link_to 'Calendar', calendar_path %>
+  <% if @target_day %>
+    <h1> <%= @target_day.to_time.strftime('%-B, %-d %Y') %> </h1>
+  <% end %>
 
-<% if @target_day %>
-  <%= @target_day.to_time.strftime('%-B, %-d %Y') %>
-<% end %>
+  <div class="category-grid">
+    <% @categories.each do |category| %>
+      <div class="category-wrapper">
+        <div> <%= category.title %> </div>
+        <div> <%= category.details.truncate(30, separator: ' ') %> </div>
 
-<% @categories.each do |category| %>
-  <div>
-    <div> <%= category.title %> </div>
-    <% unless @target_day %>
-      <%= category.target_date.strftime('%-B, %-d %Y') %>
+        <div>
+          <% unless @target_day %>
+            <%= category.target_date.strftime('%-B, %-d %Y') %>
+          <% end %>
+        </div>
+
+        <div><%= category.tasks.count %> Tasks</div>
+
+        
+
+        <%= link_to '👁 Show', category_path(category), class: "link1" %>
+        <%= link_to '✎ Edit', edit_category_path(category, target_day: category.target_date.to_date), class: "link2"  %>
+        <%= link_to 'X Delete', category_path(category), method: :delete, data: { confirm: "Are you sure?" }, class: "link3" %>
+      </div>
     <% end %>
-
-    <% category.tasks.each do |task| %>
-      <%= task.title %>
-    <% end %>
-
-    <%= link_to 'Show categ', category_path(category) %>
-    <%= link_to 'Edit categ', edit_category_path(category, target_day: category.target_date.to_date) %>
-    <%= link_to 'Delete categ', category_path(category), method: :delete, data: { confirm: "Are you sure?" }%>
   </div>
-<% end %>
+</section>
+

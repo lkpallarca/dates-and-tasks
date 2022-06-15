@@ -1,0 +1,74 @@
+@import "../base/variables";
+@import "../base/mixins";
+
+.page {
+  @include perimeter(100vh, 100vw);
+  background-image: asset_url("academic-calendar.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  position: relative;
+  font-size: 20px;
+
+  h1 {
+    position: absolute;
+    top: 5vh;
+    left: 4vw;
+    font-size: 70px;
+    font-family: $title-font;
+    color: white;
+  }
+
+  .access-form {
+    @include box;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    left: 10vw;
+
+    .alert, .message {
+      color: red;
+      font-size: 14px;
+    }
+
+    h2 {
+      font-size: 26px;
+      margin-bottom: 3vh;
+      font-family: $title-font;
+    }
+
+    a {
+      text-decoration: none;
+      font-size: 17px;
+      color: $link-blue;
+
+      &:hover {
+        color: $my-blue;
+      }
+    }
+    
+    .field {
+      @include perimeter(auto, max-content);
+      margin: 2.5vh 0;
+
+    }
+    
+    .remember {
+      margin-top: -1.25vh;
+      font-size: 16px;
+      color: $link-blue;
+    }
+
+    .actions {
+      input {
+        @include perimeter(auto, 12.5vw);
+        cursor: pointer;
+        background-color: $link-blue;
+        color: white;
+        border: none;
+        border-radius: 7.5px;
+        padding: 5px 0;
+      }
+    }
+  }
+}

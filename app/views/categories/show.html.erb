@@ -21,7 +21,6 @@
   <%= task.status %>
   <%= task.title %>
   <%= task.body %>
-  <%= link_to 'add user', add_users_path %>
   <%= link_to 'edit task', edit_category_task_path(@category, task) %>
   <%= link_to 'delete task', category_task_path(@category, task), method: :delete, data: {confirm: "sure?"} %>
 <% end %>
