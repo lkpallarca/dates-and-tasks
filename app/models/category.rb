@@ -2,6 +2,12 @@ class Category < ApplicationRecord
   belongs_to :user
   has_many :tasks, dependent: :destroy
 
-  validates_presence_of :title
+  validates :title, 
+            presence: true, 
+            length: { maximum: 25 },
+            format: { with: /\A[a-zA-Z\s]+\z/i, message: "only allows letters" }
+
   validates_presence_of :target_date
+
+  validates_uniqueness_of :title, scope: :user_id
 end

@@ -28,6 +28,7 @@ footer, header, hgroup, menu, nav, section {
 }
 body {
 	@include scrollbar;
+  background-color: $my-wallpaper;
 	line-height: 1;
 }
 ol, ul {

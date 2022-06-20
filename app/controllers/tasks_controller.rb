@@ -1,5 +1,4 @@
 class TasksController < ApplicationController
-  before_action :authenticate_user!
   before_action :find_category
   before_action :set_task, only: [:edit, :update, :destroy]
 
@@ -8,10 +7,10 @@ class TasksController < ApplicationController
   end
 
   def create
-    @task = @category.tasks.build(task_params.merge(category_id: @category))
+    @task = @category.tasks.build(task_params)
 
     if @category.save
-      redirect_to category_path(@category)
+      redirect_to category_path(@category), notice: 'Task is successfully created!'
     else
       render :new
     end
@@ -36,7 +35,7 @@ class TasksController < ApplicationController
   private
   
   def find_category
-    @category = Category.find(params[:category_id])
+    @category = current_user.categories.find(params[:category_id])
   end
   
   def set_task

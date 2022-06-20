@@ -10,5 +10,5 @@ Rails.application.routes.draw do
     resources :tasks
   end
   
-  get '/calendar', to: 'calendar#index'
+  get '/calendar', to: 'calendar#show'
 end

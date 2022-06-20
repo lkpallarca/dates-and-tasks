@@ -1,0 +1,29 @@
+<section class="calendar-page">
+  <nav>
+    <%= link_to 'Dates and Tasks', calendar_path, class: "brand" %>
+    <div>
+      <%= link_to "All Task Categories", categories_path %>
+      <%= link_to "Sign Out", destroy_user_session_path, method: :delete %>
+    </div>
+  </nav>
+
+  <% if notice %>
+    <p class='notice'> <%= notice %> </p>
+  <% end %>
+
+  <div class="calendar-wrapper">
+    <%= month_calendar do |date| %>
+      <%=  date.day %>
+
+      <% @categories.map do |category| %>
+        <% if category.target_date == date %>
+          <%= link_to "View Events", categories_path(category, target_day: category.target_date.to_date), class: "view-event", target: "_blank" %>
+          <% break %>
+        <% end %>
+      <% end %>
+
+      <%= link_to "Add Event", new_category_path(target_day: date), class: "add-event", id: date %>
+    <% end %>
+  </div>
+</section>
+

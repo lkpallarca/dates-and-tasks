@@ -1,5 +1,2 @@
-<h1>Categories#edit</h1>
-<p>Find me in app/views/categories/edit.html.erb</p>
-
-<%= render 'form', category: @category, target_day: @target_day %>
-<%= link_to 'Calendar', calendar_path %>
+<%= render 'nav', path: categories_path(@category, target_day: @category.target_date.to_date) %>
+<%= render 'form', category: @category, target_day: @target_day, action: "Edit Task Category" %>

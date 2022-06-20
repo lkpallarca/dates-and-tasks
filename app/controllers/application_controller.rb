@@ -2,7 +2,10 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
   before_action :update_allowed_parameters, if: :devise_controller?
-  before_action :set_beginning_of_week, if: :user_signed_in?
+  before_action :authenticate_user!
+  before_action :set_beginning_of_week
+
+  rescue_from ActiveRecord::RecordNotFound, with: :record_not_found
 
   protected
 
@@ -19,7 +22,11 @@ class ApplicationController < ActionController::Base
   end
 
   def update_allowed_parameters
-    devise_parameter_sanitizer.permit(:sign_up) { |u| u.permit(:username, :email, :password)}
+    devise_parameter_sanitizer.permit(:sign_up) { |u| u.permit(:username, :email, :password, :password_confirmation)}
     devise_parameter_sanitizer.permit(:account_update) { |u| u.permit(:username, :email, :password, :current_password)}
+  end
+
+  def record_not_found
+    render file: Rails.root.join('public/404.html'), layout: true, status: :not_found
   end
 end

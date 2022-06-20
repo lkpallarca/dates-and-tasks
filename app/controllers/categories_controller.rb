@@ -1,13 +1,11 @@
 class CategoriesController < ApplicationController
-  before_action :authenticate_user!
   before_action :set_category, only: [:show, :edit, :update, :destroy]
-  before_action :set_target_day, only: [:new, :edit]
 
   def index
     unless params[:target_day]
-      @categories = Category.where(user_id: current_user.id).order(:target_date)
+      @categories = current_user.categories.order(target_date: :desc)
     else 
-      @categories = Category.where(user_id: current_user.id).where('target_date = ?', params[:target_day])
+      @categories = current_user.categories.where('target_date = ?', params[:target_day])
       @target_day = params[:target_day]
     end
   end
@@ -17,14 +15,14 @@ class CategoriesController < ApplicationController
   
   def new
     @category = Category.new
+    @target_day = params[:target_day]
   end  
 
   def create
-    @category = Category.new(category_params)
-    @category.update(user_id: current_user.id)
+    @category = current_user.categories.build(category_params)
 
     if @category.save
-      redirect_to calendar_path
+      redirect_to calendar_path, notice: 'Category is successfully created!'
     else
       render :new
     end
@@ -43,10 +41,10 @@ class CategoriesController < ApplicationController
 
   def destroy
     @category.destroy
-    if session[:target_day].nil?
-      redirect_to calendar_path
+    if current_user.categories.where('target_date = ?', params[:target_day]).exists?
+      redirect_to categories_path(target_day: params[:target_day])
     else
-      redirect_to categories_path(target_day: session[:target_day])
+      redirect_to calendar_path
     end
   end
 
@@ -54,11 +52,6 @@ class CategoriesController < ApplicationController
 
   def set_category
     @category = current_user.categories.find(params[:id])
-    session[:target_day] = @category.target_date.to_date
-  end
-
-  def set_target_day
-    @target_day = params[:target_day]
   end
 
   def category_params

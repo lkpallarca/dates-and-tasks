@@ -1,4 +1,4 @@
 <section class="new-category sections">
-  <%= render 'nav' %>
-  <%= render 'form', category: @category, target_day: @target_day %>
+  <%= render 'nav', path: calendar_path %>
+  <%= render 'form', category: @category, target_day: @target_day, action: "Create Task Category" %>
 </section>

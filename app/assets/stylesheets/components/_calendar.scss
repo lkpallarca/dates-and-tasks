@@ -5,6 +5,7 @@
   @include perimeter(100vh, 100vw);
   background-color: $my-wallpaper;
   position: relative;
+  overflow-x: hidden;
 
   .notice {
     @include perimeter(auto, max-content);
@@ -18,7 +19,7 @@
 
   .calendar-wrapper {
     position: absolute;
-    top: 15%;
+    top: 20%;
     left: 50%;
     transform: translateX(-50%);
     display: flex;

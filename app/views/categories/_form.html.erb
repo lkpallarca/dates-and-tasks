@@ -1,14 +1,7 @@
 <%= form_with model: category, class: "new-categ-form" do |form| %>
-  <% if category.errors.any? %>
-    <div id="error_message">
-      <% category.errors.each do |error| %>
-          <li><%= error.full_message %></li>
-      <% end %>
-    </div>
-  <% end %>
-
   <section>
     <%= hidden_field_tag :previous_request, request.referer %>
+    <h1> <%= action %> </h1>
 
     <div>
       <%= form.label "Date" %>
@@ -18,8 +11,15 @@
     
     <div>
       <%= form.label :title %>
+      <% if @category.errors.any? %>
+        <ul id="error_message">
+          <% @category.errors.each do |error| %>
+              <li><%= error.full_message %></li>
+          <% end %>
+        </ul>
+      <% end %>
       <br>
-      <%= form.text_field :title, required: true %>
+      <%= form.text_field :title, autofocus: true, required: true %>
     </div>
     
     <div>

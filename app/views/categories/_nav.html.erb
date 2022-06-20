@@ -1,6 +1,8 @@
 <nav>
   <%= link_to 'Dates and Tasks', calendar_path, class: "brand" %>
   <div>
+    <%= link_to '⇦', path %>
+    <%= link_to "All Task Categories", categories_path %>
     <%= link_to 'Calendar', calendar_path %>
     <%= link_to "Sign Out", destroy_user_session_path, method: :delete %>
   </div>

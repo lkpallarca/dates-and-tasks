@@ -1,8 +1,3 @@
-@import "../base/variables";
-@import "../base/mixins";
-
 .sections {
-  @include perimeter(100vh, 100vw);
-  background-color: $my-wallpaper;
   position: relative;
 }

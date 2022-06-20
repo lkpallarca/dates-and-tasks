@@ -1,26 +1,46 @@
-<h1>Categories#show</h1>
-<p>Find me in app/views/categories/show.html.erb</p>
+<section class="category-show sections">
+  <%= render 'nav', path: categories_path(@category, target_day: @category.target_date.to_date) %>
 
-<%= @category.title %><br>
-<%= @category.target_date.strftime('%-B, %-d %Y') %>
-
-<br>
-<br>
-<br>
-
-<%= link_to 'create task', new_category_task_path(@category) %>
-
-<br>
-<br>
-<br>
-
-<% @category.tasks.each do |task| %>
-  <%= form_with model: [task.category, task] do |form| %>
-    <%= form.check_box :status, onchange: "this.form.submit();" %>
+  <% if notice %>
+    <p class='notice'> <%= notice %> </p>
   <% end %>
-  <%= task.status %>
-  <%= task.title %>
-  <%= task.body %>
-  <%= link_to 'edit task', edit_category_task_path(@category, task) %>
-  <%= link_to 'delete task', category_task_path(@category, task), method: :delete, data: {confirm: "sure?"} %>
-<% end %>
+
+  <h1> <%= @category.target_date.strftime('%-B %-d, %Y') %> </h1>
+
+  <div class="category-wrapper">
+    <div> <%= @category.title.capitalize %> </div>
+    <div> <%= @category.details %> </div>  
+  </div>
+
+  <h2> Tasks </h2>
+
+  <div class="task-grid">
+    <% @category.tasks.each do |task| %>
+      <div class="task-wrapper">
+        <div> <%= task.title.capitalize %> </div>
+        <div> <%= task.body %> </div>
+        
+        <div>
+          <%= form_with model: [task.category, task] do |form| %>
+            <%= form.check_box :status, onchange: "this.form.submit();", class: "checkbox" %>
+          <% end %>
+
+          <% if task.status == false %>
+            <span class="undone">Not yet done..</span>
+          <% else %>
+            <span class="done">Done!</span>
+          <% end %>
+        </div>
+
+        <%= link_to '✎ Edit Task', edit_category_task_path(@category, task), class: "link2" %>
+        <%= link_to 'X Delete Task', category_task_path(@category, task), method: :delete, data: {confirm: "Continue to delete this task?"}, class: "link3" %>
+      </div>
+    <% end %>
+
+    <%= link_to new_category_task_path(@category), id: "create_task" do %>
+      <div class="add-task"> + </div>
+    <% end %>
+  </div>
+
+</section>
+

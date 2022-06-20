@@ -1,5 +1,5 @@
 class CalendarController < ApplicationController
-  def index
-    @categories = Category.where(user_id: current_user.id) if user_signed_in?
+  def show
+    @categories = current_user.categories
   end
 end

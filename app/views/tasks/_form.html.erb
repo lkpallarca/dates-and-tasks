@@ -1,16 +1,27 @@
-<%= form_with model: [@category, @task] do |form| %>
+<%= form_with model: [@category, @task], class: "new-categ-form" do |form| %>
+  <h1> <%= action %> </h1>
+
   <section>
     <div>
       <%= form.label :title %>
-      <%= form.text_field :title %>
+      <% if @task.errors.any? %>
+        <ul id="error_message">
+          <% @task.errors.each do |error| %>
+              <li><%= error.full_message %></li>
+          <% end %>
+        </ul>
+      <% end %>
+      <br>
+      <%= form.text_field :title, required: true, autofocus: true %>
     </div>
 
     <div>
       <%= form.label :body %>
-      <%= form.text_area :body %>
+      <br>
+      <%= form.text_area :body, required: true %>
     </div>
     
-    <div>
+    <div class="submit-btn">
       <%= form.submit %>
     </div>
   </section>
