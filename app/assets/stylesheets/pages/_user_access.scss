@@ -19,6 +19,13 @@
     color: white;
   }
 
+  .calendar-logo {
+    img {
+      @include perimeter(100px, 250px);
+      margin: 2.5vh 0 0 2.5vw;
+    }
+  }
+
   .access-form {
     @include box;
     position: absolute;
