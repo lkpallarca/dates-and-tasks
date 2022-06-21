@@ -11,7 +11,7 @@ RSpec.describe 'DeletingTasks', type: :system do
   end
 
   let(:target_day) do
-    find("a[href='/categories?target_day=#{today}']")
+    find("a[href='/categories.#{category.id}?target_day=#{today}']")
   end
 
   let(:category) do

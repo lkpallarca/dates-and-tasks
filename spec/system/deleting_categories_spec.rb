@@ -11,7 +11,7 @@ RSpec.describe 'DeletingCategories', type: :system do
   end
 
   let(:target_day) do
-    find("a[href='/categories?target_day=#{today}']")
+    find("a[href='/categories.#{category.id}?target_day=#{today}']")
   end
   
   let(:attributes) do
@@ -36,7 +36,7 @@ RSpec.describe 'DeletingCategories', type: :system do
     visit calendar_path
     target_day.click
 
-    find("a[href='/categories/#{category.id}']", class: "link3").click
+    find("a[href='/categories/#{category.id}?target_day=#{today}']", class: "link3").click
   end
 
   it 'deletes category' do
