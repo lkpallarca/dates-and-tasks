@@ -5,5 +5,5 @@ class User < ApplicationRecord
          :rememberable,
          :validatable
 
-  has_many :categories
+  has_many :categories, dependent: :destroy
 end
