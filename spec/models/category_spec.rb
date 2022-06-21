@@ -94,12 +94,7 @@ RSpec.describe Category, type: :model do
 
   context 'when title is longer than 25 characters' do
     before do
-      subject.title = 'This is thirty characters'
-
-      Category.create(title: subject.title,
-                      details: subject.details,
-                      target_date: Date.current,
-                      user_id: subject.user_id)
+      subject.title = 'A' * 26
     end
 
     it 'does not validate' do
