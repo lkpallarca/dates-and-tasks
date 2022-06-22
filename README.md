@@ -18,9 +18,10 @@ Ruby 3.1.2
 * PostgreSQL 14.2
 
 ## Featured Gems
-* gem devise
-* gem simple_calendar
-* gem rpsec-rails
+* gem 'simple_calendar'
+* gem 'devise'
+* gem 'ransack'
+* gem 'rpsec-rails'
 
 ## Configuration
 
@@ -34,6 +35,9 @@ bundle binstubs rspec-core (creates executable for rspec)
 
 ```
 rails db:create
+  or
+rails db:setup (to initiate seeds on the database)
+
 rails db:migrate
 ```
 
