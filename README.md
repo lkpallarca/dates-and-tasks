@@ -21,7 +21,7 @@ Ruby 3.1.2
 * gem 'simple_calendar'
 * gem 'devise'
 * gem 'ransack'
-* gem 'rpsec-rails'
+* gem 'rspec-rails'
 
 ## Configuration
 
