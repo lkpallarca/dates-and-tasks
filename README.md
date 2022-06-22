@@ -2,7 +2,7 @@
 
 [![dates-and-tasks-app.png](https://i.postimg.cc/tTt4480k/dates-and-tasks-app.png)](https://postimg.cc/wyMpWfjR)
 
-Dates and Tasks app is an app that can be used to organize tasks categorized per day on a calendar UI. It features user login simulation using **Devise** gem and performing Test Driven Development (TDD) and Behavior Driven Development (BDD) on Ruby on Rails using **RSpec**. It is deployed on Heroku and can be accessed by clicking on the title above.
+Dates and Tasks app is an app that can be used to organize tasks categorized per day on a calendar UI. It features user login simulation using **Devise** gem, search models and/or sql query using **Ransack** gem, and performing Test Driven Development (TDD) and Behavior Driven Development (BDD) on Ruby on Rails using **RSpec**. It is deployed on Heroku and can be accessed by clicking on the title above.
 
 -----------
 
