@@ -3,7 +3,8 @@ class CategoriesController < ApplicationController
 
   def index
     unless params[:target_day]
-      @categories = current_user.categories.order(target_date: :desc)
+      @q = current_user.categories.ransack(params[:q])
+      @categories = @q.result.order(target_date: :desc)
     else 
       @categories = current_user.categories.where('target_date = ?', params[:target_day])
       @target_day = params[:target_day]

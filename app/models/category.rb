@@ -10,4 +10,8 @@ class Category < ApplicationRecord
   validates_presence_of :target_date
 
   validates_uniqueness_of :title, scope: :user_id
+
+  def ransackable_attributes(auth_object = nil)
+    ["title"]
+  end
 end

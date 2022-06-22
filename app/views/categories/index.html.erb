@@ -1,6 +1,18 @@
 <section class="category-index sections">
   <%= render 'nav', path: calendar_path %>
 
+  <% unless @target_day %>
+    <%= search_form_for @q, class: 'category-search' do |f| %>
+      <%= f.label :title_i_cont, 'Search for category title' %>
+      <br>
+      <%= f.search_field :title_i_cont %>
+
+      <div class='submit-btn'>
+        <%= f.submit name: '' %>
+      </div>
+    <% end %>
+  <% end %>
+
   <% if @target_day %>
     <h1> <%= @target_day.to_time.strftime('%-B %-d, %Y') %> </h1>
   <% end %>

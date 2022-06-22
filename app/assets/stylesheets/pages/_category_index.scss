@@ -2,6 +2,51 @@
 @import "../base/mixins";
 
 .category-index {
+  .category-search {
+    @include perimeter(auto, max-content);
+    box-shadow: 3px 3px 8px gray, -3px 3px 8px gray;
+    background-color: hsl(225, 6%, 33%);
+    border-radius: 15px;
+    padding: 20px 30px;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    
+    label {
+      font-size: 18px;
+      text-align: center;
+      color: white;
+    }
+
+    input {
+      padding: 5px 15px;
+      border: 2px solid $my-blue-dark;
+      border-radius: 7px;
+      font-size: 14px;
+      text-align: center;
+    }
+
+    .submit-btn {
+      margin: 10px auto 0 auto;
+
+      input {
+        cursor: pointer;
+        font-size: 14px;
+        border: none;
+        color: $link-blue;
+        background-color: $my-color;
+        color: white;
+        border-radius: 7px;
+        padding: 4px 8px;
+        margin-top: 0;
+
+        &:hover {
+          color: $my-blue;
+        }
+      }
+    }
+  }
+
   h1, h2 {
     @include perimeter(auto, max-content);
     background-color: hsl(225, 6%, 33%);
