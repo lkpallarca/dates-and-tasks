@@ -31,9 +31,11 @@ gem 'bootsnap', '>= 1.4.4', require: false
 gem 'net-smtp', require: false
 gem 'net-imap', require: false
 gem 'net-pop', require: false
+
 gem 'devise'
 gem "simple_calendar", "~> 2.4"
 gem "rspec-rails", group: [:development, :test]
+gem 'ransack'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
