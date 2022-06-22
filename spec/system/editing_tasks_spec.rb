@@ -26,7 +26,8 @@ RSpec.describe 'EditingTasks', type: :system do
       title: 'Task title',
       body: 'Task body',
       status: false,
-      category_id: category.id
+      category_id: category.id,
+      user_id: user.id
     }
   end
 

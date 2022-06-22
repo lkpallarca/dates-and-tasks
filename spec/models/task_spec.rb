@@ -17,7 +17,8 @@ RSpec.describe Task, type: :model do
     described_class.new(title: 'Task title',
                         body: 'Task body',
                         status: false,
-                        category_id: category.id)
+                        category_id: category.id,
+                        user_id: user.id)
   end
 
   before do
@@ -53,7 +54,8 @@ RSpec.describe Task, type: :model do
         title: subject.title,
         body: 'Sample body',
         status: false,
-        category_id: subject.category_id
+        category_id: subject.category_id,
+        user_id: subject.user_id
       )
 
       subject.title = subject.title
@@ -69,7 +71,9 @@ RSpec.describe Task, type: :model do
       described_class.create(title: subject.title,
                       body: subject.body,
                       status: false,
-                      category_id: subject.category_id)
+                      category_id: subject.category_id,
+                      user_id: subject.user_id
+                    )
 
       subject.title = '69420@!'
     end

@@ -1,0 +1,45 @@
+<section class="task-index sections">
+  <%= render 'categories/nav', path: calendar_path %>
+
+  <%= search_form_for @q, class: 'task-search' do |f| %>
+    <%= f.label :title_i_cont, 'Search for task title' %>
+    <br>
+    <%= f.search_field :title_i_cont %>
+    <br>
+    <div>
+      <%= f.check_box :status_false, {}, 1, nil %>
+      <%= f.label :status, 'Show only unfinished tasks', class: 'unf-tasks-label' %>
+    </div>
+
+    <div class='submit-btn'>
+      <%= f.submit name: '' %>
+    </div>
+  <% end %>
+
+  <h2> Tasks </h2>
+
+  <div class="task-grid">
+    <% @tasks.each do |task| %>
+      <div class="task-wrapper">
+        <div> <%= task.title.capitalize %> </div>
+        <div> <%= task.body %> </div>
+        
+        <div>
+          <%= form_with model: [task.category, task] do |form| %>
+            <%= form.check_box :status, onchange: "this.form.submit();", class: "checkbox" %>
+          <% end %>
+
+          <% if task.status == false %>
+            <span class="undone">Not yet done..</span>
+          <% else %>
+            <span class="done">Done!</span>
+          <% end %>
+        </div>
+
+        <%= link_to '✎ Edit Task', edit_category_task_path(task.category_id, task), class: "link2" %>
+        <%= link_to 'X Delete Task', category_task_path(task.category_id, task), method: :delete, data: {confirm: "Continue to delete this task?"}, class: "link3" %>
+      </div>
+    <% end %>
+  </div>
+</section>
+

@@ -26,7 +26,8 @@ RSpec.describe 'DeletingTasks', type: :system do
       title: 'Task title',
       body: 'Task Body',
       status: false,
-      category_id: category.id
+      category_id: category.id,
+      user_id: user.id
     }
   end
 

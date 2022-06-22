@@ -1,8 +1,8 @@
 @import "../base/variables";
 @import "../base/mixins";
 
-.category-index {
-  .category-search {
+.task-index {
+  .task-search {
     @include perimeter(auto, max-content);
     box-shadow: 3px 3px 8px gray, -3px 3px 8px gray;
     background-color: hsl(225, 6%, 33%);
@@ -45,6 +45,10 @@
         }
       }
     }
+
+    .unf-tasks-label {
+      font-size: 14px;
+    }
   }
 
   h1, h2 {
@@ -59,21 +63,22 @@
   }
 
   h2 {
-    margin: 7vh 0 0 7vw;
+    margin: 0 0 0 7vw;
   }
 
-  .category-grid {
+  .task-grid {
     @include perimeter(auto, 90vw);
-    margin: 5vh auto 0 auto;
+    margin: 2.5vh auto 5vh auto;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     grid-template-rows: auto;
     justify-items: center;
+    align-items: center;
 
-    .category-wrapper {
-      @include perimeter(auto, max-content);
+    .task-wrapper {
       @include box;
-      margin-bottom: 5vh;
+      max-width: 300px;
+      margin: 2.5vh 0;
       
       div:nth-child(1) {
         font-size: 26px;
@@ -90,27 +95,47 @@
       }
 
       div:nth-child(2) {
-        @include perimeter(auto, 90%);
+        height: 80px;
+        overflow-y: scroll;
+        width: 90%;
         margin: 0 auto;
         padding: 7px 15px;
         border-radius: 7px;
         background-color: hsla(225, 6%, 13%, 0.9);
         color: white;
+        line-height: 1.2;
+      }
+
+      div:nth-child(3) {
+        display: flex;
+        padding: 7px 15px;
+  
+        form {
+          width: fit-content;
+          padding-right: 5px;
+          
+          .checkbox {
+            @include perimeter(15px, 15px);
+            cursor: pointer;
+          }
+        }
+
+        .undone {
+          padding-top: 3px;
+          color: red;
+        }
+
+        .done {
+          color: blue;
+          padding-top: 3px;
+        }
       }
 
       div {
+        @include scrollbar;
         margin-bottom: 15px;
       }
-
-      .spec-day {
-        margin: 15px 0;
-      }
-
-      .link1 {
-        &:hover {
-          color: green;
-        }
-      }
+      
       .link2 {
         &:hover {
           color: blue;
@@ -133,6 +158,17 @@
         padding: 4px 8px;
         margin-top: 0;
       }
+    }
+
+    .add-task {
+      @include perimeter(100px, 100px);
+      @include box;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 0;
+      font-size: 40px;
+      color: #202124;
     }
   }
 }
