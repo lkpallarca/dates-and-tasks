@@ -1,0 +1,174 @@
+@import "../base/variables";
+@import "../base/mixins";
+
+.task-index {
+  .task-search {
+    @include perimeter(auto, max-content);
+    box-shadow: 3px 3px 8px gray, -3px 3px 8px gray;
+    background-color: hsl(225, 6%, 33%);
+    border-radius: 15px;
+    padding: 20px 30px;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    
+    label {
+      font-size: 18px;
+      text-align: center;
+      color: white;
+    }
+
+    input {
+      padding: 5px 15px;
+      border: 2px solid $my-blue-dark;
+      border-radius: 7px;
+      font-size: 14px;
+      text-align: center;
+    }
+
+    .submit-btn {
+      margin: 10px auto 0 auto;
+
+      input {
+        cursor: pointer;
+        font-size: 14px;
+        border: none;
+        color: $link-blue;
+        background-color: $my-color;
+        color: white;
+        border-radius: 7px;
+        padding: 4px 8px;
+        margin-top: 0;
+
+        &:hover {
+          color: $my-blue;
+        }
+      }
+    }
+
+    .unf-tasks-label {
+      font-size: 14px;
+    }
+  }
+
+  h1, h2 {
+    @include perimeter(auto, max-content);
+    background-color: hsl(225, 6%, 33%);
+    padding: 5px 10px;
+    font-size: 7vmin;
+    color: white;
+    border-radius: 7px;
+    margin: auto;
+    font-family: $title-font;
+  }
+
+  h2 {
+    margin: 0 0 0 7vw;
+  }
+
+  .task-grid {
+    @include perimeter(auto, 90vw);
+    margin: 2.5vh auto 5vh auto;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: auto;
+    justify-items: center;
+    align-items: center;
+
+    .task-wrapper {
+      @include box;
+      max-width: 300px;
+      margin: 2.5vh 0;
+      
+      div:nth-child(1) {
+        font-size: 26px;
+        position: relative;
+
+        &::after {
+          @include perimeter(2px, 50%);
+          position: absolute;
+          bottom: -20%;
+          left: 0;
+          content: "";
+          background-color: hsl(0, 0, 80%);
+        }
+      }
+
+      div:nth-child(2) {
+        height: 80px;
+        overflow-y: scroll;
+        width: 90%;
+        margin: 0 auto;
+        padding: 7px 15px;
+        border-radius: 7px;
+        background-color: hsla(225, 6%, 13%, 0.9);
+        color: white;
+        line-height: 1.2;
+      }
+
+      div:nth-child(3) {
+        display: flex;
+        padding: 7px 15px;
+  
+        form {
+          width: fit-content;
+          padding-right: 5px;
+          
+          .checkbox {
+            @include perimeter(15px, 15px);
+            cursor: pointer;
+          }
+        }
+
+        .undone {
+          padding-top: 3px;
+          color: red;
+        }
+
+        .done {
+          color: blue;
+          padding-top: 3px;
+        }
+      }
+
+      div {
+        @include scrollbar;
+        margin-bottom: 15px;
+      }
+      
+      .link2 {
+        &:hover {
+          color: blue;
+        }
+      }
+      .link3 {
+        &:hover {
+          color: red;
+        }
+      }
+
+      a {
+        cursor: pointer;
+        font-size: 14px;
+        border: none;
+        color: $link-blue;
+        background-color: $my-color;
+        color: white;
+        border-radius: 7px;
+        padding: 4px 8px;
+        margin-top: 0;
+      }
+    }
+
+    .add-task {
+      @include perimeter(100px, 100px);
+      @include box;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 0;
+      font-size: 40px;
+      color: #202124;
+    }
+  }
+}

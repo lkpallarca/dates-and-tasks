@@ -1,5 +1,6 @@
 class Task < ApplicationRecord
   belongs_to :category
+  belongs_to :user
   
   attribute :status, :boolean, default: false
 
@@ -11,4 +12,8 @@ class Task < ApplicationRecord
   validates :body, presence: true
 
   validates_uniqueness_of :title, scope: :category_id
+
+  def ransackable_attributes(auth_object = nil)
+    ["title", "status"]
+  end
 end

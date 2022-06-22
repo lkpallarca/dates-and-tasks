@@ -6,4 +6,5 @@ class User < ApplicationRecord
          :validatable
 
   has_many :categories, dependent: :destroy
+  has_many :tasks
 end

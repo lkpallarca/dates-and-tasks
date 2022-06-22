@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   resources :categories do
     resources :tasks
   end
-  
+
   get '/calendar', to: 'calendar#show'
+  get '/tasks', to: 'tasks#index'
 end
